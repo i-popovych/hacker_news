@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+        .form-container {
+            text-align: center;
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .line {
+            width: 100%;
+            height: 1px;
+            margin: 10px 0;
+            flex: 1;
+            border-bottom: 1px solid #000; 
+        }
+        .line-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .or {
+            text-align: center;
+            margin: 10px 0;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Submit Form</h1>
+        <form action="#" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter the title" class="form-input" required>
+            <br>
+            <label for="url">URL:</label>
+            <input type="text" id="url" name="url" placeholder="Enter the URL" class="form-input">
+            <br>
+            <div class="line-container">
+            <div class="line"></div>
+            <div class="or">or</div>
+            <div class="line"></div>
+    </div>
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" placeholder="Enter the comment" class="form-input" rows="4"></textarea>
+            <br>
+            <p>* Leave URL blank to submit a question for discussion. If there is no URL, text will appear at the top of the thread. If there is a URL, text is optional.</p>
+            <br>
+            <input type="submit" value="Submit" class="form-input">
+        </form>
+    </div>
+</body>
+</html> 
+
+
