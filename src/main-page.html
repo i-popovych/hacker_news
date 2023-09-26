@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main page</title>
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/general.css">
+  <link rel="stylesheet" href="./styles/main-page/header.css">
+  <link rel="stylesheet" href="./styles/main-page/general.css"> 
+  <link rel="stylesheet" href="./styles/main-page/news-block.css"> 
+  <link rel="stylesheet" href="./styles/main-page/footer.css"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v6.4.2/css/all.css">
 </head>
 <body>
   <div class="wrapper">
@@ -11,27 +21,33 @@
       <div class="header__body">
         <div class="header__logo">
           <img src="./assets/logo.png" alt="logo">
+          <div>
+            <span>The front page</span>
+            <span>Powered by Hacker News</span>
+          </div>
         </div>
 
         <div class="header__navigation">
           <nav class="navigation">
             <ul class="navigation__list">
-              <li>New</li>
-              <li>Comments</li>
-              <li>Show</li>
-              <li>Ask</li>
-              <li>Jobs</li>
+              <li><a href="#">News</a></li>
+              <li><a href="#">Comments</a></li>
+              <li><a href="#">Show</a></li>
+              <li><a href="#">Ask</a></li>
+              <li><a href="#">Jobs</a></li>
             </ul>
             <div class="navigation__search search">
-              <img src="" alt="">
+              <i class="fa-solid fa-magnifying-glass"></i>
             </div>
           </nav>
         </div>
 
         <div class="header__person-block person-block">
-          <div class="person-block__img"></div>
-          <div class="person-block__name"></div>
-          <div class="person-block__expand-arrow"></div>
+          <div class="person-block__left">
+            <div class="person-block__img"><i class="fa-regular fa-circle-user"></i></div>
+            <div class="person-block__name"> <span>Lola T.</span> </div>
+          </div>
+          <div class="person-block__expand-arrow"><i class="fa-solid fa-chevron-down"></i></div>
         </div>
       </div>
     </header>
@@ -43,7 +59,7 @@
         </div>
 
         <div>
-          <button class="news-block__submit-bth bth"></button>
+          <button class="news-block__submit-bth bth"><pre>+    Submit</pre></button>
         </div>
       </header>
 
@@ -51,25 +67,57 @@
         <article class="news-block__item news-item">
           <div class="news-item__ordinal-number"><p>1</p></div>
           <div class="news-item__rating">
-            <img src="" alt="">
+            <i class="fa-solid fa-play"></i>
             <p>336</p>
           </div>
           <div class="news-item__main-text"><p>Spaceship Generator</p></div>
           <div class="news-item__author-name">
-            <img src="" alt="">
+            <i class="fa-solid fa-user"></i>
             <p>nick</p>
           </div>
-          <div class="news_item__link"><a href="https://github.com">github.com</a></div>
+          <div class="news_item__link">
+            <i class="fa-solid fa-link"></i>
+            <a href="https://github.com">github.com</a>
+          </div>
           <div class="news-item__posting-hours">
-            <img src="" alt="">
+            
+            <i class="fa-solid fa-clock"></i>
             <p>6 hours ago</p>
           </div>
           <div class="news-item__comments-num">
-            <img src="" alt="">
+            <i class="fa-solid fa-comment"></i>
             <p>35</p>
           </div>
           <div class="news-item__bookmark">
-            <img src="" alt="">
+            <i class="fa-solid fa-bookmark"></i>
+          </div>
+        </article>
+        <article class="news-block__item news-item">
+          <div class="news-item__ordinal-number"><p>2</p></div>
+          <div class="news-item__rating">
+            <i class="fa-solid fa-play"></i>
+            <p>336</p>
+          </div>
+          <div class="news-item__main-text"><p>Spaceship Generator</p></div>
+          <div class="news-item__author-name">
+            <i class="fa-solid fa-user"></i>
+            <p>nick</p>
+          </div>
+          <div class="news_item__link">
+            <i class="fa-solid fa-link"></i>
+            <a href="https://github.com">github.com</a>
+          </div>
+          <div class="news-item__posting-hours">
+            
+            <i class="fa-solid fa-clock"></i>
+            <p>6 hours ago</p>
+          </div>
+          <div class="news-item__comments-num">
+            <i class="fa-solid fa-comment"></i>
+            <p>35</p>
+          </div>
+          <div class="news-item__bookmark">
+            <i class="fa-solid fa-bookmark"></i>
           </div>
         </article>
       </main>
