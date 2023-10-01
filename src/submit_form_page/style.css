@@ -1,0 +1,137 @@
+body { 
+  background-color: #1B1B1B;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.title { 
+  color: #F60;
+  font-family: Roboto Slab;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 20px;
+}
+
+.form-container {  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.title-label { 
+  color: #F60;
+  font-family: Roboto Slab;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 20px;
+}
+
+.input-container { 
+  width: 684px;
+  height: 49px;
+  border-radius: 10px;
+  border: 2px solid #F60;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.input-text {
+  color: #FFF;
+  font-family: Roboto Slab;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  flex-grow: 1;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  padding: 0 10px; 
+}
+
+
+.divider {
+  width: 684px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.divider-line {
+  flex-grow: 1;
+  border-bottom: 2px solid #F60;
+}
+
+.or {
+  padding: 0 10px;
+  color: #FFF;
+  font-family: Roboto Slab;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: normal;
+}
+.comment-input-container {
+  width: 684px;
+  height: 250px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 2px solid #F60;
+  margin-top: 10px;
+}
+
+.comment-input {
+  color: #FFF;
+  text-align: left;
+  font-family: Roboto Slab;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  padding: 10px;
+  resize: none;
+}
+
+.submit-button-container {
+  width: 684px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.submit-button {
+  width: 300px;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 2px solid #F60;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.submit-button-text {
+  color: #F60;
+  text-align: center;
+  font-family: Roboto Slab;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: uppercase;
+} 
