@@ -1,0 +1,63 @@
+body {
+    font-family: 'Times New Roman', sans-serif;
+    margin: 0;
+    background-color: #333;
+    color: #fff;
+}
+
+.user-info {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.user-info-column {
+    border: 2px solid #FFA500;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+}
+
+.user-info-column h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.user-info-column p {
+    color: #FFA500;
+    text-align: left;
+    padding-left: 10px;
+    border-left: 2px solid #FFA500;
+}
+
+.user-info-column p span {
+    color: #fff; /* Додано білий колір для вмісту p */
+}
+
+.update-button {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+}
+
+.update-button button {
+    padding: 10px 20px;
+    background-color: #FFA500;
+    border: none;
+    border-radius: 15px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.update-button button:hover {
+    background-color: #FFD700;
+}
