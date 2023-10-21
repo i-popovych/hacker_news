@@ -1,1 +1,3 @@
-export const getMainUrlName = (url) => url.split('/')[2]
+export const getMainUrlName = (url) => {
+  return url ? url.split('/')[2] : "hn.com"
+}

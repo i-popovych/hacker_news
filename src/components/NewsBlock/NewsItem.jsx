@@ -1,8 +1,16 @@
-import React from 'react';
-import {getMainUrlName} from "../helpers/index.js";
+import React from "react";
+import { getMainUrlName } from "../helpers/index.js";
 
-export const NewsItem = ({ordinalItem, rating, authorName, linkToNews, postingHours, commentsCount}) => {
-  const linkTitle = getMainUrlName(linkToNews)
+export const NewsItem = ({
+  ordinalItem,
+  rating,
+  authorName,
+  linkToNews,
+  postingHours,
+  commentsCount,
+  title,
+}) => {
+  const linkTitle = getMainUrlName(linkToNews);
 
   return (
     <article className="news-block__item news-item">
@@ -14,7 +22,7 @@ export const NewsItem = ({ordinalItem, rating, authorName, linkToNews, postingHo
         <p>{rating}</p>
       </div>
       <div className="news-item__main-text">
-        <p>Spaceship Generator</p>
+        <p>{title}</p>
       </div>
       <div className="news-item__author-name">
         <i className="fa-solid fa-user"></i>
@@ -38,11 +46,3 @@ export const NewsItem = ({ordinalItem, rating, authorName, linkToNews, postingHo
     </article>
   );
 };
-
-
-
-
-
-
-
-
