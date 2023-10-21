@@ -8,14 +8,15 @@ import "./styles/main-page/header.css";
 import "./styles/main-page/footer.css";
 import App from "./App.jsx";
 
-import { ThemeProvider, createTheme } from "@mui/material/styles"; // Import the necessary ThemeProvider
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import {BrowserRouter} from "react-router-dom";
 
 const theme = createTheme();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ThemeProvider theme={theme}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </ThemeProvider>,
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+  </ThemeProvider>
 );

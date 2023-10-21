@@ -3,7 +3,6 @@ import {$api} from "./index.js";
 class HnApi {
   async getPopularNews(pageSize = 10, page = 1) {
     try {
-      debugger
       let {data: newsIds} = await $api.get("topstories.json")
       const newsCount = newsIds.length
       const startIdx = (page - 1) * pageSize;

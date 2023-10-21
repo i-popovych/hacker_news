@@ -93,12 +93,15 @@
   color: #757575;
 }
 
-.news-item__author-name {
+.news-item__author-name p{
   color: #757575;
+  overflow: hidden;
 }
+
 
 .news_item__link a {
   color: #757575;
+  overflow: hidden;
 }
 
 .news-item__posting-hours {
