@@ -1,0 +1,1 @@
+export const getMainUrlName = (url) => url.split('/')[2]
