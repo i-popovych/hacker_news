@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <img src="image.png" alt="Image", class="image">
+        </div>
+        <div>
+            <img src="stars.png" alt="Rating Stars" class="rating-stars">
+        </div>
+            
+        <div class="title">Track Users Without Fingerprintinge</div>
+        <div class="description">
+            I want to be able to give users a 3 day trial period to use my product (a React + Node.js web app) without a sign-up. Seems that the best option online is fingerprint.com and I've learned the hard way that the free npm version is only 60% accurate. My other option is to save a uuid on the browser's local storage to track the user. This wont work if the user erased their history. I'd like to pause and ask the community - Is there a fundamentally better way to do an x-day free trial?
+        </div>
+
+        <div>
+            <button id="1page" type="readmore" class="readmore-button">
+                <div class="button-text">read more</div>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("1page").onclick = function() {
+            window.location.href = "file2.html";
+        };
+    </script>
+
+    
+</body>
+</html>
