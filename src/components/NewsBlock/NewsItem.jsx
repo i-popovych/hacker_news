@@ -1,5 +1,6 @@
 import React from "react";
 import { getMainUrlName } from "../helpers/index.js";
+import {NavLink} from "react-router-dom";
 
 export const NewsItem = ({
   ordinalItem,
@@ -9,6 +10,7 @@ export const NewsItem = ({
   postingHours,
   commentsCount,
   title,
+  id
 }) => {
   const linkTitle = getMainUrlName(linkToNews);
 
@@ -22,7 +24,7 @@ export const NewsItem = ({
         <p>{rating}</p>
       </div>
       <div className="news-item__main-text">
-        <p>{title}</p>
+        <NavLink to={"/news/" + id}>{title}</NavLink>
       </div>
       <div className="news-item__author-name">
         <i className="fa-solid fa-user"></i>

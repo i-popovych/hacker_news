@@ -34,7 +34,6 @@ export const NewsBlock = () => {
     const f = async () => {
       setNews(null);
       const result = await hn.getPopularNews(newsLimit, newsPage);
-
       if (result) {
         setNews(getPreparedNewsItems(result.newsList));
         setNewsCount(result.newsCount);
@@ -70,6 +69,7 @@ export const NewsBlock = () => {
         )}
         {news && news.map((newsItem, index) => (
           <NewsItem
+            id={newsItem.id}
             key={newsItem.title}
             ordinalItem={index + 1 + (newsPage - 1) * newsLimit}
             {...newsItem}

@@ -4,6 +4,7 @@ export const getPreparedNewsItems = (newsArr) => {
 
 const getProperObj = (obj) => {
   return {
+    id: obj.id,
     rating: obj.score,
     authorName: obj.by,
     linkToNews: obj.url,

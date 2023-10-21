@@ -88,10 +88,16 @@
   transform: rotate(-90deg);
 }
 
-.news-item__main-text {
+.news-item__main-text a {
   font-size: 1.3em;
   color: #757575;
+  cursor: pointer;
 }
+
+.news-item__main-text a:hover {
+  text-decoration: underline;
+}
+
 
 .news-item__author-name p{
   color: #757575;
