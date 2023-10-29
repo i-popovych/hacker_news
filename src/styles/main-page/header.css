@@ -1,18 +1,29 @@
+@media screen and (max-width: 770px) {
+  .header__body {
+    flex-wrap: wrap;
+  }
+
+  .header__navigation {
+    flex: 0 1 100% !important;
+  }
+}
+
 .header {
-  height: 100px;
   padding-top: 10px;
 }
 
 .header__body {
   display: flex;
   justify-content: space-between;
+  column-gap: 10px;
+  row-gap: 30px;
 }
 
 .header__logo {
   display: flex;
   column-gap: 5px;
-  flex: 0 0 300px;
-  height: 100px;
+  flex: 0 0 200px;
+  min-height: 100px;
 }
 
 .header__logo img {
@@ -53,13 +64,15 @@
 
 .navigation {
   display: flex;
+  gap: 30px;
 }
 
 .navigation__list {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 1.4em;
   font-weight: bold;
+  column-gap: 10px;
 }
 
 .navigation__list a:hover {
@@ -74,10 +87,10 @@
 }
 
 .header__person-block {
-  flex: 0 0 200px;
+  flex: 0 0 150px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .person-block__name {
