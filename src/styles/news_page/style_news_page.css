@@ -1,4 +1,4 @@
-body {
+.body_news {
     background: #1B1B1B;
     display: flex;
     justify-content: center;
@@ -27,7 +27,6 @@ body {
     width: 424px;
     height: 430px;
     flex-shrink: 0;
-    
 }
 
 .rating-stars {
@@ -43,21 +42,22 @@ body {
 
 .title {
     position: absolute;
-    top: 145px;
-    left: 511px; 
-    width: auto; 
-    max-width: 800px;
+    top: 47px;
+    left: 511px;
+    width: auto;
+    height: 110px;
     color: #F60;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 400;
 }
+
 
 .title-p2 {
     position: absolute;
     top: 45px;
-    left: 55px; 
-    width: auto; 
+    left: 55px;
+    width: auto;
     max-width: 800px;
     color: #F60;
     font-family: 'Courier New', Courier, monospace;
@@ -65,9 +65,9 @@ body {
     font-weight: 400;
 }
 
-.description {
+.comments {
     position: absolute;
-    top: 205px;
+    top: 169px;
     right: 61px;
     bottom: 337px;
     left: 516px;
@@ -135,10 +135,6 @@ body {
 }
 
 .readmore-button {
-    position: absolute;
-    left: 519px;
-    top: 630px;
-    bottom: 51px;
     width: 300px;
     height: 45px;
     flex-shrink: 0;
@@ -146,6 +142,9 @@ body {
     border: 2px solid #F60;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
+    position: absolute;
+    left: 705px;
+    top: 431px;
     margin-top: 20px;
     display: flex;
     align-items: center;
@@ -164,12 +163,11 @@ body {
     text-transform: uppercase;
 }
 
-.input-container { 
+.input-container {
     position: relative;
     width: 630px;
     height: 49px;
-    right: 39px;
-    left: 660px;
+    left: 234px;
     top: 579px;
     bottom: 111px;
     border-radius: 10px;
@@ -177,9 +175,9 @@ body {
     margin-top: 10px;
     display: flex;
     align-items: center;
-  }
-  
-  .input-text {
+}
+
+.input-text {
     color: #000;
     font-family: Roboto Slab;
     font-size: 16px;
@@ -189,43 +187,42 @@ body {
     border: none;
     background-color: transparent;
     outline: none;
-    padding: 0 10px; 
-  }
+    padding: 0 10px;
+}
 
 .p2-text{
     position: absolute;
-    top: 650px;
-    left: 850px;
-    right: 350px;
+    top: 666px;
+    left: 810px;
     bottom: 51px;
     color: #000;
-    font-family: Roboto Slab;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
     font-weight: 200;
 }
 
 .pa-text {
     position: absolute;
-    top: 630px;
+    top: 502px;
     left: 55px;
     right: 350px;
-    bottom: 90px;
+    bottom: 51px;
     color: #000;
-    font-family: Roboto Slab;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
     font-weight: 200;
 }
 
 .pd-text {
     position: absolute;
-    top: 650px;
+    top: 536px;
     left: 55px;
     right: 350px;
     bottom: 51px;
     color: #000;
-    font-family: Roboto Slab;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
     font-weight: 200;
 }
 
-  
+
