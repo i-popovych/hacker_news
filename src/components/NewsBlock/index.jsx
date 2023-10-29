@@ -7,12 +7,23 @@ import { styled } from "@mui/system";
 import {NewsFilterContext} from "../../App.jsx";
 import {fetchDataType} from "../../helpers/constants/index.js";
 
+const Input = ({ value, onChange, placeholder }) => {
+  return (
+    <input
+      type="text"
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+    />
+  );
+};
 
 export const NewsBlock = () => {
   const [items, setItems] = useState(null);
   const [itemsCount, setItemsCount] = useState(0);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
+  const [newsSearch, setNewsSearch] = useState('');
 
   const sm = useMediaQuery('(max-width:600px)')
 
@@ -73,6 +84,9 @@ export const NewsBlock = () => {
   const onPageChange = (event, value) => {
     setPage(value);
   };
+  const handleSearchChange = (e) => {
+    setNewsSearch(e.target.value);
+  };
 
   return (
     <div className="news-block">
@@ -103,7 +117,16 @@ export const NewsBlock = () => {
           />
         ))}
       </main>
+      <div>
 
+        <Input 
+          value={newsSearch}
+          onChange={handleSearchChange}
+          placeholder="Search"
+        />
+        {/* Кнопка для пошуку */}
+        <button onClick={() => setNewsPage(1)}>Search</button>
+      </div>
       <div className="news-block__pagination pagination" style={{justifyContent: sm ? "start" : ""}}>
         <StyledPagination
           page={page}
