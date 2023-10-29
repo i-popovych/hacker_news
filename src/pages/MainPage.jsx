@@ -4,6 +4,7 @@ import { NewsBlock } from "../components/NewsBlock/index.jsx";
 import {Header} from "../components/NewsBlock/Header.jsx";
 
 const MainPage = () => {
+
   return (
     <div className="wrapper">
       <Header />

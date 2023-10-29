@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { NewsItem } from "./NewsItem.jsx";
 import { hn } from "../../api/hn.api.js";
 import { getPreparedNewsItems } from "./helpers/getPreparedNewsItems.js";
 import {CircularProgress, Pagination, useMediaQuery} from "@mui/material";
 import { styled } from "@mui/system";
+import {NewsFilterContext} from "../../App.jsx";
+import {fetchDataType} from "../../helpers/constants/index.js";
 
 
 export const NewsBlock = () => {
-  const [news, setNews] = useState(null);
-  const [newsCounts, setNewsCount] = useState(0);
-  const [newsPage, setNewsPage] = useState(1);
-  const [newsLimit, setNewsLimit] = useState(10);
+  const [items, setItems] = useState(null);
+  const [itemsCount, setItemsCount] = useState(0);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
 
   const sm = useMediaQuery('(max-width:600px)')
+
+  const {fetchDataName} = useContext(NewsFilterContext)
+
 
   const StyledPagination = styled(Pagination)(({ theme }) => ({
     "& .MuiPaginationItem-root": {
@@ -35,19 +40,38 @@ export const NewsBlock = () => {
 
   useEffect(() => {
     const f = async () => {
-      setNews(null);
-      const result = await hn.getPopularNews(newsLimit, newsPage);
-      if (result) {
-        setNews(getPreparedNewsItems(result.newsList));
-        setNewsCount(result.newsCount);
+      setItems(null);
+      let items;
+      let itemsCount;
+      debugger
+
+      switch (fetchDataName) {
+        case fetchDataType.TOP_NEWS: {
+          const res = await hn.getPopularNews(limit, page)
+          items = res.itemsList
+          itemsCount = res.itemsCount
+          break;
+        }
+
+        case fetchDataType.ASKS: {
+          const res = await hn.getPopularAsks(limit, page)
+          items = res.itemsList;
+          itemsCount = res.itemsCount
+          break
+        }
+      }
+
+      if (items) {
+        setItems(getPreparedNewsItems(items));
+        setItemsCount(itemsCount);
       }
     };
 
     f();
-  }, [newsPage]);
+  }, [page, fetchDataName]);
 
   const onPageChange = (event, value) => {
-    setNewsPage(value);
+    setPage(value);
   };
 
   return (
@@ -65,16 +89,16 @@ export const NewsBlock = () => {
       </header>
 
       <main className="news-block__list news-list">
-        {!news && (
+        {!items && (
           <div className="news-block__loading-box">
             <CircularProgress />
           </div>
         )}
-        {news && news.map((newsItem, index) => (
+        {items && items.map((newsItem, index) => (
           <NewsItem
             id={newsItem.id}
             key={newsItem.title}
-            ordinalItem={index + 1 + (newsPage - 1) * newsLimit}
+            ordinalItem={index + 1 + (page - 1) * limit}
             {...newsItem}
           />
         ))}
@@ -82,7 +106,8 @@ export const NewsBlock = () => {
 
       <div className="news-block__pagination pagination" style={{justifyContent: sm ? "start" : ""}}>
         <StyledPagination
-          count={newsCounts / newsLimit}
+          page={page}
+          count={Math.ceil(itemsCount / limit)}
           onChange={onPageChange}
         />
       </div>

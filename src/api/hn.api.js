@@ -1,26 +1,48 @@
 import {$api} from "./index.js";
+import {getStartAndEndIdx} from "./helpers/getStartAndEndIdx.js";
+
+
 
 class HnApi {
   async getPopularNews(pageSize = 10, page = 1) {
     try {
       let {data: newsIds} = await $api.get("topstories.json")
-      const newsCount = newsIds.length
-      const startIdx = (page - 1) * pageSize;
-      const endIdx = page * pageSize;
+      const itemsCount = newsIds.length
+      const [startIdx, endIdx] = getStartAndEndIdx(page, pageSize)
       newsIds = newsIds.slice(startIdx, endIdx)
 
-      const newsList =  await Promise.all(newsIds.map(newsItem => this.getOneNewsById(newsItem)))
+      const itemsList =  await Promise.all(newsIds.map(newsItem => this.getOneItemById(newsItem)))
 
       return {
-        newsList,
-        newsCount
+        itemsList,
+        itemsCount
+      }
+    } catch (e){
+      console.log(e)
+      return false
+    }
+  }
+
+  async getPopularAsks(pageSize = 10, page = 1) {
+    try {
+      let {data: askIds} = await $api.get("askstories.json?print=pretty")
+      const itemsCount = askIds.length
+
+      const [startIdx, endIdx] = getStartAndEndIdx(page, pageSize)
+      askIds = askIds.slice(startIdx, endIdx)
+
+      const itemsList = await Promise.all(askIds.map(askId => this.getOneItemById(askId)))
+
+      return {
+        itemsList,
+        itemsCount
       }
     } catch {
       return false
     }
   }
 
-  async getOneNewsById(id) {
+  async getOneItemById(id) {
     return (await $api.get(`item/${id}.json`)).data
   }
 }

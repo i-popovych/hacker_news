@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import img from "../../assets/logo.png";
+import {NewsFilterContext} from "../../App.jsx";
+import {fetchDataType} from "../../helpers/constants/index.js";
 
 export const Header = () => {
+  const {setFetchDataName} = useContext(NewsFilterContext)
+
   return (
     <header className="header">
       <div className="header__body">
@@ -16,10 +20,10 @@ export const Header = () => {
         <div className="header__navigation">
           <nav className="navigation">
             <ul className="navigation__list">
-              <li><a href="#">News</a></li>
+              <li><a href="#" onClick={() => setFetchDataName(fetchDataType.TOP_NEWS)}>News</a></li>
               <li><a href="#">Comments</a></li>
               <li><a href="#">Show</a></li>
-              <li><a href="#">Ask</a></li>
+              <li><a href="#" onClick={() => setFetchDataName(fetchDataType.ASKS)}>Ask</a></li>
               <li><a href="#">Jobs</a></li>
             </ul>
             <div className="navigation__search search">
