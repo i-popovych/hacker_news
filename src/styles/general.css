@@ -17,6 +17,19 @@ html, body {
   flex-direction: column;
 }
 
+
+@media screen and (max-width: 1050px) {
+  .wrapper {
+    padding: 5%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper {
+    padding: 1%;
+  }
+}
+
 a {
   color: var(--lnk-color);
   text-decoration: none;

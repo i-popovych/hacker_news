@@ -2,33 +2,36 @@ import React, { useEffect, useState } from "react";
 import { NewsItem } from "./NewsItem.jsx";
 import { hn } from "../../api/hn.api.js";
 import { getPreparedNewsItems } from "./helpers/getPreparedNewsItems.js";
-import { CircularProgress, Pagination } from "@mui/material";
+import {CircularProgress, Pagination, useMediaQuery} from "@mui/material";
 import { styled } from "@mui/system";
 
-const StyledPagination = styled(Pagination)(({ theme }) => ({
-  "& .MuiPaginationItem-root": {
-    color: theme.palette.primary.main,
-    backgroundColor: "white",
-    width: "38px",
-    height: "38px",
-    borderRadius: "50%",
-    fontSize: "20px",
-    margin: "0 5px",
-    "&:hover": {
-      backgroundColor: theme.palette.primary.light,
-    },
-  },
-  "& .Mui-selected": {
-    backgroundColor: theme.palette.primary.main,
-    color: "white",
-  },
-}));
 
 export const NewsBlock = () => {
   const [news, setNews] = useState(null);
   const [newsCounts, setNewsCount] = useState(0);
   const [newsPage, setNewsPage] = useState(1);
   const [newsLimit, setNewsLimit] = useState(10);
+
+  const sm = useMediaQuery('(max-width:600px)')
+
+  const StyledPagination = styled(Pagination)(({ theme }) => ({
+    "& .MuiPaginationItem-root": {
+      color: theme.palette.primary.main,
+      backgroundColor: "white",
+      width: sm ? "18px" : "38px",
+      height: sm ? "18px" : "38px",
+      borderRadius: sm  ? null : "50%",
+      fontSize: sm ? "10px" : "20px",
+      margin: "0 5px",
+      "&:hover": {
+        backgroundColor: theme.palette.primary.light,
+      },
+    },
+    "& .Mui-selected": {
+      backgroundColor: theme.palette.primary.main,
+      color: "white",
+    },
+  }));
 
   useEffect(() => {
     const f = async () => {
@@ -77,7 +80,7 @@ export const NewsBlock = () => {
         ))}
       </main>
 
-      <div className="news-block__pagination pagination">
+      <div className="news-block__pagination pagination" style={{justifyContent: sm ? "start" : ""}}>
         <StyledPagination
           count={newsCounts / newsLimit}
           onChange={onPageChange}
