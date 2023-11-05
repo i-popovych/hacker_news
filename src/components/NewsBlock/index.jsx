@@ -70,6 +70,13 @@ export const NewsBlock = () => {
           itemsCount = res.itemsCount
           break
         }
+
+        case fetchDataType.SHOW: {
+          const res = await hn.getPopularShows(limit, page)
+          items = res.itemsList;
+          itemsCount = res.itemsCount
+          break
+        }
       }
 
       if (items) {
