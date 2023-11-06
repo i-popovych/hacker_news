@@ -1,0 +1,1 @@
+export const isNewsExist = (newsArr, id) => newsArr.find(newsItem => newsItem.id === id)

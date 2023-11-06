@@ -10,7 +10,9 @@ export const NewsItem = ({
   postingHours,
   commentsCount,
   title,
-  id
+  id,
+  isSelected = false,
+  onSaveNews
 }) => {
   const linkTitle = getMainUrlName(linkToNews);
 
@@ -42,8 +44,8 @@ export const NewsItem = ({
         <i className="fa-solid fa-comment"></i>
         <p>{commentsCount}</p>
       </div>
-      <div className="news-item__bookmark">
-        <i className="fa-solid fa-bookmark"></i>
+      <div className="news-item__bookmark" onClick={onSaveNews}>
+        <i className={`${isSelected ? 'fa-solid' : 'fa-regular'} fa-bookmark`}></i>
       </div>
     </article>
   );

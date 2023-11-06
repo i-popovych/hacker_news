@@ -3,7 +3,7 @@
   --lnk-color: #FF6600;
 }
 
-html, body {
+html, body, #root {
   background-color: var(--main-bg-color);
   height: 100%;
   font-style: Roboto Slab;

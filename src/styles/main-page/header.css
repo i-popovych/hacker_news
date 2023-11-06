@@ -6,6 +6,11 @@
   .header__navigation {
     flex: 0 1 100% !important;
   }
+
+  .header__person-block {
+    margin-left: auto;
+    flex-basis: 60px !important;
+  }
 }
 
 .header {

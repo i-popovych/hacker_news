@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { hn } from "../api/hn.api";
-import image from './image.png';
+import image from '/src/pages/image.png';
 import Comment from "./Comment.jsx";
 
 
@@ -9,6 +9,7 @@ const NewsItem = () => {
     const { newsId } = useParams();
     const [news, setNews] = useState(null);
     const [comments, setComments] = useState([])
+
 
 
     useEffect(() => {
@@ -34,10 +35,6 @@ const NewsItem = () => {
         }).catch((error) => {
             console.error("Error loading comments:", error);
         })
-
-
-
-
     }, [newsId, news])
 
     return(
@@ -49,8 +46,14 @@ const NewsItem = () => {
                             <img src={image} alt="Image" className="image" />
                         </div>
                         <div className="title">{news.title}</div>
+
+                        {/*{*/}
+                        {/*    comments.length && comments.map(commentItem => <Comment className="comments" {...commentItem}/>)*/}
+                        {/*}*/}
                         {
-                            comments.length && comments.map(commentItem => <Comment className="pa-text" {...commentItem}/>)
+                            comments.slice(0, 1).map((commentItem, index) => (
+                                <Comment key={index} className="comments" {...commentItem} />
+                            ))
                         }
 
                         <div className="pa-text">Created by: {news.by}</div>
@@ -65,7 +68,10 @@ const NewsItem = () => {
                             <button type="addcomment" className="addcomment-button">
                                 <div className="button-text">add comment</div>
                             </button>
-                            <p className="p2-text">view all comments</p>
+                            {/*<p className="p2-text">view all comments</p>*/}
+                            <p className="p2-text">
+                                <Link to="/comments">view all comments</Link>
+                            </p>
                         </div>
                     </div>
                 </div>

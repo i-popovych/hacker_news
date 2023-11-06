@@ -6,6 +6,7 @@ import {CircularProgress, Pagination, useMediaQuery} from "@mui/material";
 import { styled } from "@mui/system";
 import {NewsFilterContext} from "../../App.jsx";
 import {fetchDataType} from "../../helpers/constants/index.js";
+import {isNewsExist} from "../../helpers/index.js";
 
 const Input = ({ value, onChange, placeholder }) => {
   return (
@@ -27,7 +28,7 @@ export const NewsBlock = () => {
 
   const sm = useMediaQuery('(max-width:600px)')
 
-  const {fetchDataName} = useContext(NewsFilterContext)
+  const {fetchDataName, savedNews, handleSaveNews} = useContext(NewsFilterContext)
 
 
   const StyledPagination = styled(Pagination)(({ theme }) => ({
@@ -54,7 +55,6 @@ export const NewsBlock = () => {
       setItems(null);
       let items;
       let itemsCount;
-      debugger
 
       switch (fetchDataName) {
         case fetchDataType.TOP_NEWS: {
@@ -117,6 +117,8 @@ export const NewsBlock = () => {
         )}
         {items && items.map((newsItem, index) => (
           <NewsItem
+            onSaveNews={() => handleSaveNews(newsItem)}
+            isSelected={isNewsExist(savedNews, newsItem.id)}
             id={newsItem.id}
             key={newsItem.title}
             ordinalItem={index + 1 + (page - 1) * limit}
