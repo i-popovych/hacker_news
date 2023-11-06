@@ -53,8 +53,6 @@ export const Header = () => {
             <ul className="navigation__list">
               <li><a href="#" onClick={() => onSelectMenuItem(fetchDataType.TOP_NEWS)}>News</a></li>
               <li><a href="#">Comments</a></li>
-              <li><a href="#" onClick={() => setFetchDataName(fetchDataType.SHOW)}>Show</a></li>
-              <li><a href="#" onClick={() => setFetchDataName(fetchDataType.ASKS)}>Ask</a></li>
               <li><a href="#">Show</a></li>
               <li><a href="#" onClick={() => onSelectMenuItem(fetchDataType.ASKS)}>Ask</a></li>
               <li><a href="#">Jobs</a></li>
