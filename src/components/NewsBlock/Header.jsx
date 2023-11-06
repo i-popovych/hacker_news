@@ -53,13 +53,10 @@ export const Header = () => {
             <ul className="navigation__list">
               <li><a href="#" onClick={() => onSelectMenuItem(fetchDataType.TOP_NEWS)}>News</a></li>
               <li><a href="#">Comments</a></li>
-<<<<<<< HEAD
               <li><a href="#" onClick={() => setFetchDataName(fetchDataType.SHOW)}>Show</a></li>
               <li><a href="#" onClick={() => setFetchDataName(fetchDataType.ASKS)}>Ask</a></li>
-=======
               <li><a href="#">Show</a></li>
               <li><a href="#" onClick={() => onSelectMenuItem(fetchDataType.ASKS)}>Ask</a></li>
->>>>>>> 21fd52c (added save news functionality, page for saved news and filtration for it)
               <li><a href="#">Jobs</a></li>
               <div className="navigation__search">
                 <i className="fa-solid fa-magnifying-glass"></i>
