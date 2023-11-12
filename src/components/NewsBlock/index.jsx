@@ -136,7 +136,7 @@ export const NewsBlock = () => {
           placeholder="Search"
         />
         {/* Кнопка для пошуку */}
-        <button onClick={() => setPage(1)}>Search</button>
+        <button onClick={() => setPage(1)}>Seearch</button>
       </div>
       <div
         className="news-block__pagination pagination"
