@@ -1,12 +1,12 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NewsItem } from "./NewsItem.jsx";
 import { hn } from "../../api/hn.api.js";
 import { getPreparedNewsItems } from "./helpers/getPreparedNewsItems.js";
-import {CircularProgress, Pagination, useMediaQuery} from "@mui/material";
+import { CircularProgress, Pagination, useMediaQuery } from "@mui/material";
 import { styled } from "@mui/system";
-import {NewsFilterContext} from "../../App.jsx";
-import {fetchDataType} from "../../helpers/constants/index.js";
-import {isNewsExist} from "../../helpers/index.js";
+import { NewsFilterContext } from "../../App.jsx";
+import { fetchDataType } from "../../helpers/constants/index.js";
+import { isNewsExist } from "../../helpers/index.js";
 
 const Input = ({ value, onChange, placeholder }) => {
   return (
@@ -24,12 +24,13 @@ export const NewsBlock = () => {
   const [itemsCount, setItemsCount] = useState(0);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const [newsSearch, setNewsSearch] = useState('');
+  const [newsSearch, setNewsSearch] = useState("");
 
-  const sm = useMediaQuery('(max-width:600px)')
+  const sm = useMediaQuery("(max-width:600px)");
 
-  const {fetchDataName, savedNews, handleSaveNews} = useContext(NewsFilterContext)
-
+  const { fetchDataName, savedNews, handleSaveNews } = useContext(
+    NewsFilterContext
+  );
 
   const StyledPagination = styled(Pagination)(({ theme }) => ({
     "& .MuiPaginationItem-root": {
@@ -37,7 +38,7 @@ export const NewsBlock = () => {
       backgroundColor: "white",
       width: sm ? "18px" : "38px",
       height: sm ? "18px" : "38px",
-      borderRadius: sm  ? null : "50%",
+      borderRadius: sm ? null : "50%",
       fontSize: sm ? "10px" : "20px",
       margin: "0 5px",
       "&:hover": {
@@ -58,17 +59,17 @@ export const NewsBlock = () => {
 
       switch (fetchDataName) {
         case fetchDataType.TOP_NEWS: {
-          const res = await hn.getPopularNews(limit, page)
-          items = res.itemsList
-          itemsCount = res.itemsCount
+          const res = await hn.getPopularNews(limit, page);
+          items = res.itemsList;
+          itemsCount = res.itemsCount;
           break;
         }
 
         case fetchDataType.ASKS: {
-          const res = await hn.getPopularAsks(limit, page)
+          const res = await hn.getPopularAsks(limit, page);
           items = res.itemsList;
-          itemsCount = res.itemsCount
-          break
+          itemsCount = res.itemsCount;
+          break;
         }
       }
 
@@ -84,6 +85,14 @@ export const NewsBlock = () => {
   const onPageChange = (event, value) => {
     setPage(value);
   };
+
+  // Фільтруємо новини за назвою при введенні користувачем
+  const filteredItems = items
+    ? items.filter((newsItem) =>
+        newsItem.title.toLowerCase().includes(newsSearch.toLowerCase())
+      )
+    : null;
+
   const handleSearchChange = (e) => {
     setNewsSearch(e.target.value);
   };
@@ -103,33 +112,36 @@ export const NewsBlock = () => {
       </header>
 
       <main className="news-block__list news-list">
-        {!items && (
+        {!filteredItems && (
           <div className="news-block__loading-box">
             <CircularProgress />
           </div>
         )}
-        {items && items.map((newsItem, index) => (
-          <NewsItem
-            onSaveNews={() => handleSaveNews(newsItem)}
-            isSelected={isNewsExist(savedNews, newsItem.id)}
-            id={newsItem.id}
-            key={newsItem.title}
-            ordinalItem={index + 1 + (page - 1) * limit}
-            {...newsItem}
-          />
-        ))}
+        {filteredItems &&
+          filteredItems.map((newsItem, index) => (
+            <NewsItem
+              onSaveNews={() => handleSaveNews(newsItem)}
+              isSelected={isNewsExist(savedNews, newsItem.id)}
+              id={newsItem.id}
+              key={newsItem.title}
+              ordinalItem={index + 1 + (page - 1) * limit}
+              {...newsItem}
+            />
+          ))}
       </main>
       <div>
-
-        <Input 
+        <Input
           value={newsSearch}
           onChange={handleSearchChange}
           placeholder="Search"
         />
         {/* Кнопка для пошуку */}
-        <button onClick={() => setNewsPage(1)}>Search</button>
+        <button onClick={() => setPage(1)}>Search</button>
       </div>
-      <div className="news-block__pagination pagination" style={{justifyContent: sm ? "start" : ""}}>
+      <div
+        className="news-block__pagination pagination"
+        style={{ justifyContent: sm ? "start" : "" }}
+      >
         <StyledPagination
           page={page}
           count={Math.ceil(itemsCount / limit)}
