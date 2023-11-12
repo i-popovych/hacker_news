@@ -86,7 +86,7 @@ export const NewsBlock = () => {
     setPage(value);
   };
 
-  // Фільтруємо новини за назвою при введенні користувачем
+  // Фільтруємо новини за назвою
   const filteredItems = items
     ? items.filter((newsItem) =>
         newsItem.title.toLowerCase().includes(newsSearch.toLowerCase())
@@ -133,10 +133,10 @@ export const NewsBlock = () => {
         <Input
           value={newsSearch}
           onChange={handleSearchChange}
-          placeholder="Search"
+          placeholder="Sffffearch"
         />
         {/* Кнопка для пошуку */}
-        <button onClick={() => setPage(1)}>Search</button>
+        <button onClick={() => setPage(1)}>Seffffarch</button>
       </div>
       <div
         className="news-block__pagination pagination"
