@@ -133,10 +133,10 @@ export const NewsBlock = () => {
         <Input
           value={newsSearch}
           onChange={handleSearchChange}
-          placeholder="Sffffearch"
+          placeholder="Search"
         />
         {/* Кнопка для пошуку */}
-        <button onClick={() => setPage(1)}>Seffffarch</button>
+        <button onClick={() => setPage(1)}>Search</button>
       </div>
       <div
         className="news-block__pagination pagination"
