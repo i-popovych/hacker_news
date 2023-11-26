@@ -7,6 +7,7 @@ import { styled } from "@mui/system";
 import { NewsFilterContext } from "../../App.jsx";
 import { fetchDataType } from "../../helpers/constants/index.js";
 import { isNewsExist } from "../../helpers/index.js";
+import {useNavigate, useNavigation} from "react-router-dom";
 
 const Input = ({ value, onChange, placeholder }) => {
   return (
@@ -71,6 +72,13 @@ export const NewsBlock = () => {
           itemsCount = res.itemsCount;
           break;
         }
+
+        case fetchDataType.JOBS: {
+          const res = await hn.getPopularJobs(limit, page);
+          items = res.itemsList;
+          itemsCount = res.itemsCount;
+          break;
+        }
       }
 
       if (items) {
@@ -97,6 +105,7 @@ export const NewsBlock = () => {
     setNewsSearch(e.target.value);
   };
 
+  const navigator = useNavigate()
   return (
     <div className="news-block">
       <header className="news-block__header">
@@ -105,7 +114,7 @@ export const NewsBlock = () => {
         </div>
 
         <div>
-          <button className="news-block__submit-bth bth">
+          <button className="news-block__submit-bth bth" onClick={() => navigator('submit-form')}>
             <pre>+ Submit</pre>
           </button>
         </div>

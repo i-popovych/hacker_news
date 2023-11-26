@@ -55,7 +55,7 @@ export const Header = () => {
               <li><a href="#">Comments</a></li>
               <li><a href="#">Show</a></li>
               <li><a href="#" onClick={() => onSelectMenuItem(fetchDataType.ASKS)}>Ask</a></li>
-              <li><a href="#">Jobs</a></li>
+              <li><a href="#" onClick={() => onSelectMenuItem(fetchDataType.JOBS)}>Jobs</a></li>
               <div className="navigation__search">
                 <i className="fa-solid fa-magnifying-glass"></i>
               </div>

@@ -1,14 +1,4 @@
-body { 
-  background-color: #1B1B1B;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Roboto Slab', sans-serif;
-}
-
-.title { 
+.title {
   color: #F60;
   font-family: Roboto Slab;
   font-size: 32px;
@@ -34,8 +24,9 @@ body {
   margin-top: 20px;
 }
 
-.input-container { 
-  width: 684px;
+.input-container {
+  width: 100%;
+  min-width: 300px;
   height: 49px;
   border-radius: 10px;
   border: 2px solid #F60;
@@ -54,12 +45,14 @@ body {
   border: none;
   background-color: transparent;
   outline: none;
-  padding: 0 10px; 
+  padding: 0 10px;
+  height: 40px;
 }
 
 
 .divider {
-  width: 684px;
+  width: 100%;
+  min-width: 300px;
   display: flex;
   align-items: center;
   margin-top: 20px;
@@ -79,7 +72,8 @@ body {
   line-height: normal;
 }
 .comment-input-container {
-  width: 684px;
+  width: 100%;
+  min-width: 300px;
   height: 250px;
   flex-shrink: 0;
   border-radius: 10px;
@@ -94,7 +88,7 @@ body {
   font-size: 16px;
   font-weight: 300;
   line-height: normal;
-  width: 100%;
+  width: 95%;
   height: 100%;
   border: none;
   background-color: transparent;
@@ -104,14 +98,14 @@ body {
 }
 
 .submit-button-container {
-  width: 684px;
+  width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
 .submit-button {
-  width: 300px;
+  width: clamp(200px, 100%, 300px);
   height: 45px;
   flex-shrink: 0;
   border-radius: 10px;
@@ -124,6 +118,8 @@ body {
   justify-content: center;
   text-align: center;
   cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .submit-button-text {
@@ -134,4 +130,27 @@ body {
   font-weight: 600;
   line-height: 20px;
   text-transform: uppercase;
-} 
+}
+
+.submit-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-form-content {
+  width: 93%;
+  padding-bottom: 20px;
+  align-items: center;
+}
+
+@media screen and (min-width: 700px) {
+  .submit-form-content {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .submit-form-content {
+    width: 50%;
+  }
+}

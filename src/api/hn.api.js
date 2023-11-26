@@ -42,6 +42,25 @@ class HnApi {
     }
   }
 
+  async getPopularJobs(pageSize = 10, page = 1) {
+    try {
+      let {data: askIds} = await $api.get("jobstories.json?print=pretty")
+      const itemsCount = askIds.length
+
+      const [startIdx, endIdx] = getStartAndEndIdx(page, pageSize)
+      askIds = askIds.slice(startIdx, endIdx)
+
+      const itemsList = await Promise.all(askIds.map(askId => this.getOneItemById(askId)))
+
+      return {
+        itemsList,
+        itemsCount
+      }
+    } catch {
+      return false
+    }
+  }
+
   async getOneItemById(id) {
     return (await $api.get(`item/${id}.json`)).data
   }

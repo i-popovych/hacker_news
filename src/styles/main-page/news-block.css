@@ -220,7 +220,7 @@
   position: relative;
 }
 
-.search__input-container input, input:focus {
+.search__input-container input, .search__input-container input:focus {
   outline:none;
   position: absolute;
   top: 15px;

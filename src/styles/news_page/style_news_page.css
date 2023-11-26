@@ -1,51 +1,64 @@
+@media screen and (min-width: 800px) {
+    .container {
+        border-radius: 49px;
+        border: 4px solid #F60;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .img-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .read-more-bth {
+        margin-left: 0 !important;
+    }
+}
+
 .body_news {
     background: #1B1B1B;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
 }
 
+
 .container {
-    position: relative;
-    width: 1338px;
-    height: 770px;
-    flex-shrink: 0;
-    border-radius: 49px;
-    border: 4px solid #F60;
     background: #D9D9D9;
+    display: inline-flex;
+    column-gap: 30px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.left-container {
     display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.right-container {
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    row-gap: 30px;
 }
 
 .image {
-    position: relative;
-    top: 47px;
-    right: 43px;
-    bottom: 243px;
-    left: 49px;
-    width: 424px;
-    height: 430px;
-    flex-shrink: 0;
+    width: clamp(200px, 70%, 300px);
+    height: auto;
 }
 
 .rating-stars {
-    position: relative;
-    top: 47px;
-    right: 54px;
-    bottom: 667px;
-    left: 561px;
-    width: 256px;
-    height: 56px;
-    flex-shrink: 0;
+
 }
 
 .title {
-    position: absolute;
-    top: 47px;
-    left: 511px;
-    width: auto;
-    height: 110px;
     color: #F60;
     font-family: 'Courier New', Courier, monospace;
     font-size: 40px;
@@ -54,11 +67,6 @@
 
 
 .title-p2 {
-    position: absolute;
-    top: 45px;
-    left: 55px;
-    width: auto;
-    max-width: 800px;
     color: #F60;
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
@@ -66,12 +74,6 @@
 }
 
 .comments {
-    position: absolute;
-    top: 169px;
-    right: 61px;
-    bottom: 337px;
-    left: 516px;
-    flex-shrink: 0;
     color: #000;
     font-family: 'Courier New', Courier, monospace;
     font-size: 24px;
@@ -79,12 +81,6 @@
 }
 
 .description-p2 {
-    position: absolute;
-    top: 100px;
-    right: 61px;
-    bottom: 337px;
-    left: 55px;
-    flex-shrink: 0;
     color: #000;
     text-align: justify;
     font-family: 'Courier New', Courier, monospace;
@@ -93,19 +89,15 @@
 }
 
 .author {
-    width: 679px;
     color: #000;
     font-family: Inter;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-top: auto;
 }
 
 .read-more {
-    align-self: flex-end;
-    margin-top: auto;
     padding: 10px 20px;
     background-color: #F60;
     color: #fff;
@@ -115,18 +107,11 @@
 }
 
 .addcomment-button {
-    position: absolute;
-    left: 995px;
-    top: 630px;
-    bottom: 51px;
-    width: 300px;
     height: 45px;
-    flex-shrink: 0;
     border-radius: 10px;
     border: 2px solid #F60;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
-    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,14 +122,10 @@
 .readmore-button {
     width: 300px;
     height: 45px;
-    flex-shrink: 0;
     border-radius: 10px;
     border: 2px solid #F60;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
-    position: absolute;
-    left: 705px;
-    top: 431px;
     margin-top: 20px;
     display: flex;
     align-items: center;
@@ -163,38 +144,42 @@
     text-transform: uppercase;
 }
 
-.input-container {
-    position: relative;
-    width: 630px;
-    height: 49px;
-    left: 234px;
-    top: 579px;
-    bottom: 111px;
-    border-radius: 10px;
-    border: 2px solid #F60;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
+.read-more-bth {
+    margin-left: auto;
 }
 
-.input-text {
+.input-container {
+    border-radius: 10px;
+    height: 40px;
+    display: flex;
+    align-items: baseline;
+    flex: 1;
+}
+
+.input-container > div {
+    /*margin-left: auto;*/
+    width: 300px;
+    height: 30px;
+}
+
+
+.input-container__input-text {
     color: #000;
     font-family: Roboto Slab;
     font-size: 16px;
     font-weight: 300;
     line-height: normal;
-    flex-grow: 1;
-    border: none;
     background-color: transparent;
-    outline: none;
+    /*border: 2px solid #F60;*/
+    border: none;
     padding: 0 10px;
+    width: 250px;
+    height: 35px;
+    display: block;
+    outline: none;
 }
 
 .p2-text{
-    position: absolute;
-    top: 666px;
-    left: 810px;
-    bottom: 51px;
     color: #000;
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
@@ -202,11 +187,6 @@
 }
 
 .pa-text {
-    position: absolute;
-    top: 502px;
-    left: 55px;
-    right: 350px;
-    bottom: 51px;
     color: #000;
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
@@ -214,11 +194,6 @@
 }
 
 .pd-text {
-    position: absolute;
-    top: 536px;
-    left: 55px;
-    right: 350px;
-    bottom: 51px;
     color: #000;
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
@@ -226,3 +201,42 @@
 }
 
 
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.comment-item-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    row-gap: 10px;
+    border-radius: 10px;
+    box-shadow: black 1px 2px 7px;
+    overflow: hidden;
+    font-family: sans-serif;
+    font-size: 1.2em;
+    line-height: 1.3;
+    max-width: 800px;
+}
+
+
+
+.comment-item-content-hidden {
+    height: 46px;
+}
+
+.comment-item-hide-bth {
+    color: orange;
+    cursor: pointer;
+}
+
+.add-comment-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
