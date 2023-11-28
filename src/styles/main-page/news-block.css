@@ -25,6 +25,7 @@
   .news-item__author-name {
     grid-area: author-name;
     min-width: 130px;
+    overflow: hidden;
   }
   .news_item__link {
     grid-area: link;
@@ -135,7 +136,7 @@
     font-size: 1.12em;
     column-gap: 10px;
     display: grid;
-    grid-template-columns: 15px 70px 1fr 80px 125px 110px 50px 30px;
+    grid-template-columns: 15px 70px 1fr 96px 112px 104px 50px 30px;
     border-bottom: #414141 1px solid;
     align-items: baseline;
   }
@@ -239,4 +240,14 @@
   border-bottom: #ff6600 2px solid;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.filter-block {
+  height: 50px;
+  margin: 30px 0 0 0
+}
+
+.filter-block__content {
+  display: flex;
+  column-gap: 15px;
 }

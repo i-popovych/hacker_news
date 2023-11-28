@@ -1,0 +1,18 @@
+.custom-selector-container {
+    font-family: 'Arial', sans-serif;
+}
+
+
+
+.selector {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.selected-option {
+    margin-top: 8px;
+    font-size: 14px;
+}

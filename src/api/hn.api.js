@@ -61,8 +61,43 @@ class HnApi {
     }
   }
 
+  async getPopularShows(pageSize = 10, page = 1) {
+    try {
+      let {data: showIds} = await $api.get("showstories.json?print=pretty")
+      const itemsCount = showIds.length
+
+      const [startIdx, endIdx] = getStartAndEndIdx(page, pageSize)
+      showIds = showIds.slice(startIdx, endIdx)
+
+      const itemsList = await Promise.all(showIds.map(askId => this.getOneItemById(askId)))
+
+      return {
+        itemsList,
+        itemsCount
+      }
+    } catch {
+      return false
+    }
+  }
+
+  async getUserComments(commentIds) {
+    try {
+      const itemsList = await Promise.all(commentIds.map(commentId => this.getOneItemById(commentId)))
+
+      return {
+        itemsList,
+      }
+    } catch {
+      return false
+    }
+  }
+
   async getOneItemById(id) {
     return (await $api.get(`item/${id}.json`)).data
+  }
+
+  async getUserById(id) {
+    return $api.get(`user/${id}.json?print=pretty`)
   }
 }
 

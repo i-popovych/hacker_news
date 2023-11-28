@@ -1,6 +1,6 @@
 import React from "react";
 import { getMainUrlName } from "../helpers/index.js";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 export const NewsItem = ({
   ordinalItem,
@@ -16,6 +16,8 @@ export const NewsItem = ({
 }) => {
   const linkTitle = getMainUrlName(linkToNews);
 
+  const navigate = useNavigate()
+
   return (
     <article className="news-block__item news-item">
       <div className="news-item__ordinal-number">
@@ -28,7 +30,7 @@ export const NewsItem = ({
       <div className="news-item__main-text">
         <NavLink to={"/news/" + id}>{title}</NavLink>
       </div>
-      <div className="news-item__author-name">
+      <div className="news-item__author-name" style={{cursor: 'pointer'}} onClick={() => navigate(`/user/${authorName}`)}>
         <i className="fa-solid fa-user"></i>
         <p>{authorName}</p>
       </div>

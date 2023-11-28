@@ -6,6 +6,7 @@ import {fetchDataType} from "./helpers/constants/index.js";
 import {isNewsExist} from "./helpers/index.js";
 import {SavedNews} from "./components/SavedNews.jsx";
 import {SubmitFormPage} from "./submit_form_page/submit_form_page.jsx";
+import {UserDetails} from "./pages/UserDetails/UserDetails.jsx";
 
 export const NewsFilterContext = createContext(null)
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/saved-news" element={<SavedNews />}/>
           <Route path="/news/:newsId" element={<NewsItem/>}/>
           <Route path="/submit-form" element={<SubmitFormPage/>}/>
+          <Route path="/user/:userId" element={<UserDetails/>}/>
           <Route path="/*" element={<Navigate to="/"/>}/>
         </Routes>
       </NewsFilterContext.Provider>
