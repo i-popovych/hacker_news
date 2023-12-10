@@ -1,0 +1,1 @@
+export {getMainUrlName} from "./getMainUrlName"

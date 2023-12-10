@@ -1,0 +1,27 @@
+.footer__links {
+  display: flex;
+  column-gap: 10px;
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
+
+
+.footer {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 1;
+}
+
+.footer__body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__links a {
+  font-size: 1.05em;
+  color: #414141;
+  text-decoration: underline;
+}
+

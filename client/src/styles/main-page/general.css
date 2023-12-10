@@ -1,0 +1,12 @@
+@media screen and (max-width: 700px) {
+  .news-block {
+    padding: 0 !important;
+    width: 100vw;
+  }
+}
+
+.news-block {
+  margin-top: 20px;
+  padding: 0 40px;
+  flex-grow: 1;
+}

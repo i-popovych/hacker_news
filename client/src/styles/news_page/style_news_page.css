@@ -1,0 +1,242 @@
+@media screen and (min-width: 800px) {
+    .container {
+        border-radius: 49px;
+        border: 4px solid #F60;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .img-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .read-more-bth {
+        margin-left: 0 !important;
+    }
+}
+
+.body_news {
+    background: #1B1B1B;
+    display: flex;
+    justify-content: center;
+}
+
+
+.container {
+    background: #D9D9D9;
+    display: inline-flex;
+    column-gap: 30px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.left-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.right-container {
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    row-gap: 30px;
+}
+
+.image {
+    width: clamp(200px, 70%, 300px);
+    height: auto;
+}
+
+.rating-stars {
+
+}
+
+.title {
+    color: #F60;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+
+.title-p2 {
+    color: #F60;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.comments {
+    color: #000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.description-p2 {
+    color: #000;
+    text-align: justify;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.author {
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.read-more {
+    padding: 10px 20px;
+    background-color: #F60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.addcomment-button {
+    height: 45px;
+    border-radius: 10px;
+    border: 2px solid #F60;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.readmore-button {
+    width: 300px;
+    height: 45px;
+    border-radius: 10px;
+    border: 2px solid #F60;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-text {
+    color: #F60;
+    text-align: center;
+    font-family: Roboto Slab;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+
+.read-more-bth {
+    margin-left: auto;
+}
+
+.input-container {
+    border-radius: 10px;
+    height: 40px;
+    display: flex;
+    align-items: baseline;
+    flex: 1;
+}
+
+.input-container > div {
+    /*margin-left: auto;*/
+    width: 300px;
+    height: 30px;
+}
+
+
+.input-container__input-text {
+    color: #000;
+    font-family: Roboto Slab;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: normal;
+    background-color: transparent;
+    /*border: 2px solid #F60;*/
+    border: none;
+    padding: 0 10px;
+    width: 250px;
+    height: 35px;
+    display: block;
+    outline: none;
+}
+
+.p2-text{
+    color: #000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.pa-text {
+    color: #000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.pd-text {
+    color: #000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.comment-item-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    row-gap: 10px;
+    border-radius: 10px;
+    box-shadow: black 1px 2px 7px;
+    overflow: hidden;
+    font-family: sans-serif;
+    font-size: 1.2em;
+    line-height: 1.3;
+    max-width: 800px;
+}
+
+
+
+.comment-item-content-hidden {
+    height: 46px;
+}
+
+.comment-item-hide-bth {
+    color: orange;
+    cursor: pointer;
+}
+
+.add-comment-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
