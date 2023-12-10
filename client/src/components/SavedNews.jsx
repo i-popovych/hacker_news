@@ -1,32 +1,56 @@
-import {styled, ThemeProvider} from "@mui/system";
-import {Box, createMuiTheme,  Pagination, TextField, useMediaQuery} from "@mui/material";
-import {NewsItem} from "./NewsBlock/NewsItem.jsx";
-import {useContext, useEffect, useState} from "react";
-import {NewsFilterContext} from "../App.jsx";
-import {Header} from "./NewsBlock/Header.jsx";
-import {WrapperLayout} from "./wrapperLayout.jsx";
-
-
-
+import { styled, ThemeProvider } from "@mui/system";
+import {
+  Box,
+  createMuiTheme,
+  Pagination,
+  TextField,
+  useMediaQuery,
+} from "@mui/material";
+import { NewsItem } from "./NewsBlock/NewsItem.jsx";
+import { useContext, useEffect, useState } from "react";
+import { NewsFilterContext, UserDataContext } from "../App.jsx";
+import { Header } from "./NewsBlock/Header.jsx";
+import { WrapperLayout } from "./wrapperLayout.jsx";
+import { serverAPI } from "../api/server.api.js";
+import { hn } from "../api/hn.api.js";
+import { getPreparedNewsItems } from "./NewsBlock/helpers/getPreparedNewsItems.js";
 
 export const SavedNews = () => {
   const [items, setItems] = useState(null);
   const [itemsCount, setItemsCount] = useState(0);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const [newsSearch, setNewsSearch] = useState('');
+  const [newsSearch, setNewsSearch] = useState("");
 
+  const sm = useMediaQuery("(max-width:600px)");
 
+  const { savedNews, handleSaveNews, setSavedNews } =
+    useContext(NewsFilterContext);
+  const { user } = useContext(UserDataContext);
+  const filtredItems = savedNews.filter((item) =>
+    item.title.toLowerCase().includes(newsSearch.toLowerCase())
+  );
 
+  useEffect(() => {
+    if (!user) return;
 
+    const f = async () => {
+      const savedNewsRes = await serverAPI.getSavedNews();
 
-  const sm = useMediaQuery('(max-width:600px)')
+      const newsIds = savedNewsRes.data.newsList;
 
-  const {savedNews, handleSaveNews} = useContext(NewsFilterContext)
-  const filtredItems = savedNews.filter(item => item.title.toLowerCase().includes(newsSearch.toLowerCase()))
+      if (!newsIds.length) return;
 
+      const res = await hn.getNewsByArr(newsIds);
+      const news = getPreparedNewsItems(res.itemsList)
 
-  const StyledPagination = styled(Pagination)(({theme}) => ({
+      setSavedNews(news);
+    };
+
+    f();
+  }, [user]);
+
+  const StyledPagination = styled(Pagination)(({ theme }) => ({
     "& .MuiPaginationItem-root": {
       color: theme.palette.primary.main,
       backgroundColor: "white",
@@ -45,8 +69,8 @@ export const SavedNews = () => {
     },
   }));
 
-
-  return (<WrapperLayout>
+  return (
+    <WrapperLayout>
       <div className="news-block">
         <header className="saved-news__header">
           <div className="search">
@@ -54,10 +78,13 @@ export const SavedNews = () => {
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
             <div className="search__input-container">
-              <input type="text" value={newsSearch} onChange={(e) => setNewsSearch(e.currentTarget.value)}/>
+              <input
+                type="text"
+                value={newsSearch}
+                onChange={(e) => setNewsSearch(e.currentTarget.value)}
+              />
             </div>
           </div>
-
         </header>
 
         <main className="news-block__list news-list">
@@ -80,7 +107,6 @@ export const SavedNews = () => {
         {/*  />*/}
         {/*</div>*/}
       </div>
-  </WrapperLayout>
-
+    </WrapperLayout>
   );
 };

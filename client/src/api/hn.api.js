@@ -23,6 +23,22 @@ class HnApi {
     }
   }
 
+  async getNewsByArr(newsIds) {
+    try {
+      const itemsCount = newsIds.length
+
+      const itemsList =  await Promise.all(newsIds.map(newsItem => this.getOneItemById(newsItem)))
+
+      return {
+        itemsList,
+        itemsCount
+      }
+    } catch (e){
+      console.log(e)
+      return false
+    }
+  }
+
   async getPopularAsks(pageSize = 10, page = 1) {
     try {
       let {data: askIds} = await $api.get("askstories.json?print=pretty")

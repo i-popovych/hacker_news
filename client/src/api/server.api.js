@@ -13,7 +13,23 @@ class ServerAPI {
   }
 
   async registration(username, password) {
-    return $serverAPI.post('registration', {username, password, email}, {baseURL: 'http://localhost:5000/api/'})
+    return $serverAPI.post('registration', {username, password}, {baseURL: 'http://localhost:5000/api/'})
+  }
+
+  async saveNews(newsId) {
+    return $serverAPI.post('add_news', {newsId})
+  }
+
+  async getSavedNews() {
+    return $serverAPI.get('saved-news')
+  }
+
+  async deleteNews(newsId) {
+    return $serverAPI.delete('delete_news', {
+      params: {
+        newsId
+      }
+    })
   }
 }
 

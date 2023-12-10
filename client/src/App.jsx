@@ -3,13 +3,14 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { serverAPI } from "./api/server.api.js";
 import { SavedNews } from "./components/SavedNews.jsx";
 import { fetchDataType } from "./helpers/constants/index.js";
-import { isNewsExist } from "./helpers/index.js";
 import MainPage from "./pages/MainPage";
 import NewsItem from "./pages/NewsItem.jsx";
 import { UserDetails } from "./pages/UserDetails/UserDetails.jsx";
 import { SubmitFormPage } from "./submit_form_page/submit_form_page.jsx";
 import { CreateAccount } from "./create_login/Create.jsx";
 import Login from "./create_login/Login.jsx";
+import { hn } from "./api/hn.api.js";
+import { getPreparedNewsItems } from "./components/NewsBlock/helpers/getPreparedNewsItems.js";
 
 export const NewsFilterContext = createContext(null);
 export const UserDataContext = createContext(null);
@@ -27,9 +28,10 @@ function App() {
         setIsLoading(true);
         const authToken = localStorage.getItem("token");
 
-
         if (!authToken) return;
-        const { user, token } = await serverAPI.getUser();
+        const { data } = await serverAPI.getUser();
+
+        const { user, token } = data;
         localStorage.setItem("token", token);
         setUser(user);
       } catch (e) {
@@ -42,14 +44,52 @@ function App() {
     f();
   }, []);
 
-  const handleSaveNews = (news) => {
-    let newsCopy = savedNews;
+  useEffect(() => {
+    if (!user) return
 
-    newsCopy = isNewsExist(newsCopy, news.id)
-      ? savedNews.filter((newsItem) => newsItem.id !== news.id)
-      : [...newsCopy, news];
+    const f = async () => {
+      const savedNewsRes = await serverAPI.getSavedNews();
 
-    setSavedNews(newsCopy);
+      const newsIds = savedNewsRes.data.newsList;
+
+      if (!newsIds.length) {
+        setSavedNews([])
+        return;
+      }
+
+      const res = await hn.getNewsByArr(newsIds);
+      const news = getPreparedNewsItems(res.itemsList)
+
+      setSavedNews(news);
+    }
+
+    f()
+  }, [user])
+
+  const handleSaveNews = async (news) => {
+    try {
+     await serverAPI.saveNews(news.id);
+    } catch (e) {
+      if (e?.response?.status) {
+        await serverAPI.deleteNews(news.id)
+      }
+      console.log(e);
+    } finally {
+      debugger
+      const savedNewsRes = await serverAPI.getSavedNews();
+
+      const newsIds = savedNewsRes.data.newsList;
+
+      if (!newsIds.length || !newsIds[0]) {
+        setSavedNews([])
+        return;
+      }
+
+      const res = await hn.getNewsByArr(newsIds);
+      const news = getPreparedNewsItems(res.itemsList)
+
+      setSavedNews(news);
+    }
   };
 
   if (isLoading) return;
@@ -57,7 +97,13 @@ function App() {
   return (
     <UserDataContext.Provider value={{ user, setUser }}>
       <NewsFilterContext.Provider
-        value={{ fetchDataName, setFetchDataName, savedNews, handleSaveNews }}
+        value={{
+          fetchDataName,
+          setFetchDataName,
+          savedNews,
+          handleSaveNews,
+          setSavedNews,
+        }}
       >
         <Routes>
           {user ? (

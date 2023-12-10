@@ -127,6 +127,7 @@ export const Header = () => {
               onClick={() => {
                 handleClose()
                 setUser(null)
+                localStorage.removeItem('token')
               }}
             >
               Logout
