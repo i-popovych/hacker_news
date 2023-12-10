@@ -6,12 +6,12 @@ import config from "config"
 class authController {
     async registration(req, res) {
         try {
-            const {username, password} = req.body;
+            const {username, password, email} = req.body;
             const candidate = await Person.findOne({username});
             if (candidate) return res.status(409).json({message: "a user with the same name is already registered"})
             if (!username && !password) return res(400).json({message: 'login and password are empty strings'})
             const hashPass = bcrypt.hashSync(password, 7);
-            const user = new Person({username, password: hashPass})
+            const user = new Person({username, password: hashPass, email})
             await user.save();
             return res.status(201).json({message: "the user has been successfully registered"})
         } catch (e) {

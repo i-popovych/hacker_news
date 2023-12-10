@@ -12,8 +12,8 @@ class ServerAPI {
     return axios.post('login', {username, password}, {baseURL: 'http://localhost:5000/api/'})
   }
 
-  async registration(username, password) {
-    return $serverAPI.post('registration', {username, password}, {baseURL: 'http://localhost:5000/api/'})
+  async registration(username, password, email) {
+    return $serverAPI.post('registration', {username, password, email}, {baseURL: 'http://localhost:5000/api/'})
   }
 
   async saveNews(newsId) {
