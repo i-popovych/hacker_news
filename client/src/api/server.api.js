@@ -13,7 +13,7 @@ class ServerAPI {
   }
 
   async registration(username, password) {
-    return $serverAPI.post('registration', {username, password}, {baseURL: 'http://localhost:5000/api/'})
+    return $serverAPI.post('registration', {username, password, email}, {baseURL: 'http://localhost:5000/api/'})
   }
 }
 

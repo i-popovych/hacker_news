@@ -5,7 +5,7 @@ import { serverAPI } from "../api/server.api";
 export const CreateAccount = () => {
   const [username, setUserName] = useState("");
   const [pass, setPass] = useState("");
-
+  const [email, setEmail] = useState("");
 
   return (
     <>
@@ -85,7 +85,14 @@ export const CreateAccount = () => {
               />
             </div>
             <div className="form-group">
-              <input type="email" id="email" name="email" placeholder="Email" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.currentTarget.value)}
+              />
             </div>
             <div className="form-group">
               <input
@@ -106,8 +113,8 @@ export const CreateAccount = () => {
                 onClick={async (e) => {
                   e.preventDefault();
                   try {
-                    await serverAPI.registration(username, pass);
-                    alert('you were successfully registred. Login now')
+                    await serverAPI.registration(username, pass, email);
+                    alert("you were successfully registred. Login now");
                   } catch (e) {
                     console.log(e);
                   }
